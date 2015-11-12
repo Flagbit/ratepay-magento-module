@@ -1,0 +1,9 @@
+{
+  "name": "ratepay/magento-module",
+  "license": "OSL-3.0",
+  "type": "magento-module",
+  "description": "RatePAY GmbH - Magento Payment Module",
+  "require": {
+      "magento-hackathon/magento-composer-installer": "*"
+  }
+}
