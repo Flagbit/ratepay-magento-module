@@ -18,12 +18,12 @@
  * @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-class RatePAY_Ratepaypayment_Adminhtml_BulkController extends Mage_Adminhtml_Controller_Action
+class RatePAY_Ratepaypayment_Adminhtml_Ratepaypayment_BulkController extends Mage_Adminhtml_Controller_Action
 {
-    
+
     /**
      * Initialize bulk view
-     * 
+     *
      * @return RatePAY_Ratepaypayment_Adminhtml_BulkController
      */
     protected function _initAction()
@@ -34,31 +34,31 @@ class RatePAY_Ratepaypayment_Adminhtml_BulkController extends Mage_Adminhtml_Con
 
     /**
      * Render the bulk layout
-     * 
+     *
      * @return RatePAY_Ratepaypayment_Adminhtml_BulkController
      */
     public function indexAction()
     {
         $this->_initAction()->renderLayout();
     }
-    
+
     /**
      * Start the mass cancel and redirect to index
      */
     public function massCancelAction()
     {
         $this->_ratepayMassEvent('cancel');
-                
+
         $this->_redirect('*/*/index');
     }
-    
+
     /**
      * Start the mass invoice and redirect to index
      */
     public function massInvoiceAction()
     {
         $this->_ratepayMassEvent('invoice');
-                
+
         $this->_redirect('*/*/index');
     }
 
@@ -68,14 +68,14 @@ class RatePAY_Ratepaypayment_Adminhtml_BulkController extends Mage_Adminhtml_Con
     public function massCreditmemoAction()
     {
         $this->_ratepayMassEvent('creditmemo');
-                
+
         $this->_redirect('*/*/index');
     }
-    
+
     /**
      * Handle the mass events and set the messages
-     * 
-     * @param string $type 
+     *
+     * @param string $type
      */
     private function _ratepayMassEvent($type)
     {
@@ -90,7 +90,7 @@ class RatePAY_Ratepaypayment_Adminhtml_BulkController extends Mage_Adminhtml_Con
                     $counter++;
                 } catch (Exception $e) {
                     $error .= $e->getMessage() . ' Order # ' . $order->getIncrementId() . '<br/>';
-                } 
+                }
             } else {
                 $msg = Mage::helper('ratepaypayment')->__('The order with the number %s can not be '. $type . 'ed.<br/>', $order->getIncrementId());
             }
@@ -99,19 +99,19 @@ class RatePAY_Ratepaypayment_Adminhtml_BulkController extends Mage_Adminhtml_Con
         if (!empty($msg)) {
             Mage::getSingleton('adminhtml/session')->addNotice($msg);
         }
-        
+
         if (!empty($error)) {
             Mage::getSingleton('adminhtml/session')->addError($error);
         }
-        
+
         if ($counter > 0) {
             Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('ratepaypayment')->__('Total of %d record(s) were  '. $type . 'ed.', $counter));
         }
     }
-    
+
     /**
      * Push the invoice, creditmemo or cancel event for the given order
-     * 
+     *
      * @param string $type
      * @param Mage_Sales_Model_Order
      * @throws Exception Wrong operation!
@@ -141,13 +141,13 @@ class RatePAY_Ratepaypayment_Adminhtml_BulkController extends Mage_Adminhtml_Con
                 throw new Exception('Wrong operation!');
         }
     }
-    
+
     /**
      * Is event for this order allowed
-     * 
+     *
      * @param string $type
      * @param Mage_Sales_Model_Order $order
-     * @return boolean 
+     * @return boolean
      */
     private function _isEventPossible($type, $order)
     {
@@ -158,8 +158,8 @@ class RatePAY_Ratepaypayment_Adminhtml_BulkController extends Mage_Adminhtml_Con
         } else if ($type == 'cancel') {
             return $order->canCancel();
         }
-        
+
         return false;
     }
-    
+
 }

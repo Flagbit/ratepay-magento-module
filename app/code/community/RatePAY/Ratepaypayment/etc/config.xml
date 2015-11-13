@@ -304,8 +304,8 @@
             </ratepay_rate_ch>
             <ratepay_rate_advanced_ch>
                 <specificgroups>ALL</specificgroups>
-            </ratepay_rate_advanced_ch>            
-            
+            </ratepay_rate_advanced_ch>
+
             <ratepay_directdebit>
                 <model>ratepaypayment/method_directdebit</model>
                 <order_status>pending_payment</order_status>
@@ -363,7 +363,7 @@
             </ratepay_directdebit_ch>
             <ratepay_directdebit_advanced_ch>
                 <specificgroups>ALL</specificgroups>
-            </ratepay_directdebit_advanced_ch>            
+            </ratepay_directdebit_advanced_ch>
 
             <ratepay_ibs>
                 <model>ratepaypayment/method_ibs</model>
@@ -411,7 +411,7 @@
             </ratepay_ibs_ch>
             <ratepay_ibs_advanced_ch>
                 <specificgroups>ALL</specificgroups>
-            </ratepay_ibs_advanced_ch>            
+            </ratepay_ibs_advanced_ch>
         </payment>
 
     </default>
@@ -461,13 +461,13 @@
 
     <admin>
         <routers>
-            <ratepaypayment>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>RatePAY_Ratepaypayment</module>
-                    <frontName>ratepaypayment</frontName>
+                    <modules>
+                        <ratepaypayment before="Mage_Adminhtml">RatePAY_Ratepaypayment_Adminhtml</ratepaypayment>
+                    </modules>
                 </args>
-            </ratepaypayment>
+            </adminhtml>
         </routers>
     </admin>
 

@@ -18,12 +18,12 @@
  * @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-class RatePAY_Ratepaypayment_Adminhtml_LogsController extends Mage_Adminhtml_Controller_Action
+class RatePAY_Ratepaypayment_Adminhtml_Ratepaypayment_LogsController extends Mage_Adminhtml_Controller_Action
 {
-    
+
     /**
      * Initialize logs view
-     * 
+     *
      * @return RatePAY_Ratepaypayment_Adminhtml_LogsController
      */
     protected function _initAction()
@@ -31,10 +31,10 @@ class RatePAY_Ratepaypayment_Adminhtml_LogsController extends Mage_Adminhtml_Con
         $this->loadLayout()->_setActiveMenu('logs/ratepay');
         return $this;
     }
-    
+
     /**
      * Render the logs layout
-     * 
+     *
      * @return RatePAY_Ratepaypayment_Adminhtml_LogsController
      */
     public function indexAction()
@@ -75,7 +75,7 @@ class RatePAY_Ratepaypayment_Adminhtml_LogsController extends Mage_Adminhtml_Con
                 foreach ($logIds as $logId) {
                     Mage::getModel('ratepaypayment/logging')->load($logId)->delete();
                 }
-                
+
                 Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('ratepaypayment')->__('Total of %d record(s) were deleted.', count($logIds)));
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
