@@ -121,14 +121,14 @@
                 </observers>
             </checkout_controller_onepage_save_shipping_method>
 
-            <adminhtml_block_html_before>
-                <observers>
-                    <RatePAY_Ratepaypayment_model_observer>
-                        <class>RatePAY_Ratepaypayment_Model_Observer</class>
-                        <method>showInstallmentPlan</method>
-                    </RatePAY_Ratepaypayment_model_observer>
-                </observers>
-            </adminhtml_block_html_before>
+            <!--<adminhtml_block_html_before>-->
+                <!--<observers>-->
+                    <!--<RatePAY_Ratepaypayment_model_observer>-->
+                        <!--<class>RatePAY_Ratepaypayment_Model_Observer</class>-->
+                        <!--<method>showInstallmentPlan</method>-->
+                    <!--</RatePAY_Ratepaypayment_model_observer>-->
+                <!--</observers>-->
+            <!--</adminhtml_block_html_before>-->
             <!-- End Frontend -->
 
             <!-- Beginn Backend -->
